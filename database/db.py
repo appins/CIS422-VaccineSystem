@@ -5,6 +5,7 @@ Group 1: Alex Anderson, Hans Prieto, Vince Qiu, Colton Trebbien, Michael Wiltshi
 This file allows interfacing with the raw SQLite data via a Python import
 '''
 
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
