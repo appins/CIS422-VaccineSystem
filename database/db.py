@@ -46,9 +46,25 @@ def create_vaccinee(username: str, fullname: str, email: str, phone: str, score:
     # Creates the new vaccinee
     new_user = Vaccinee(username=username, fullname=fullname, email=email, phone=phone, score=score, password=hashed_password)
 
-    db.session.add(new_user)
-    db.session.commit()
+    # Push changes to database
+    try:
+        db.session.add(new_user)
+        db.session.commit()
+        return True
+    except:
+        db.session.rollback()
+        return False
+
+def get_user_by_username(username: str) -> Vaccinee:
+    '''Select a user based on their username'''
+    user = Vaccinee.query.filter_by(username=username).first()
+    return user
 
 def debug_get_all_users() -> list:
+    '''Get all users returns a list of all of the registered users. Useful for
+    debugging.
+
+    Don't use this in production.
+    '''
     return Vaccinee.query.all()
 
