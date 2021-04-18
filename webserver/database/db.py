@@ -8,9 +8,14 @@ This file allows interfacing with the raw SQLite data via a Python import
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
+db = SQLAlchemy()
+
+def init_app(app):
+    db.init_app(app)
+    app.app_context().push()
+
+def create_all():
+    db.create_all()
 
 class Vaccinee(db.Model):
     '''Vaccinee is a person who wishes to be vaccinated.
@@ -32,6 +37,7 @@ class Vaccinee(db.Model):
     phone = db.Column(db.String(30), unique=True, nullable=False)
     score = db.Column(db.Float, unique=False, nullable=False)
     password = db.Column(db.String(100), nullable=False)
+    has_been_vaccinated = db.Column(db.Boolean, default=True)
 
 def create_vaccinee(username: str, fullname: str, email: str, phone: str, score: float, password: str) -> bool:
     '''Create vaccinee creates a vaccinee and stores them in the database,
@@ -60,6 +66,9 @@ def get_user_by_username(username: str) -> Vaccinee:
     user = Vaccinee.query.filter_by(username=username).first()
     return user
 
+def delete_user(username: str) -> bool:
+    pass 
+
 def debug_get_all_users() -> list:
     '''Get all users returns a list of all of the registered users. Useful for
     debugging.
@@ -68,3 +77,5 @@ def debug_get_all_users() -> list:
     '''
     return Vaccinee.query.all()
 
+if __name__ == "__main__":
+    setup_db()

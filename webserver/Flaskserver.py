@@ -8,9 +8,11 @@ This file Supports the Server Framework
 import flask
 from database import db
 
-QLALCHEMY_TRACK_MODIFICATIONS = False
-
 app = flask.Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db.init_app(app)
+db.create_all()
 
 @app.route("/")
 def Home():

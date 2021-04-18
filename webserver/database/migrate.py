@@ -5,7 +5,7 @@ Group 1: Alex Anderson, Hans Prieto, Vince Qiu, Colton Trebbien, Michael Wiltshi
 This file does all migrations needed to create the datbase
 '''
 
-from db import db
+from .db import db
 
 def hard_reset():
     '''Hard reset completely resets the database.'''
@@ -17,6 +17,10 @@ def hard_reset():
     if ans == "yes":
         db.drop_all()
         db.create_all()
+
+def create_all():
+    '''Create all updates and creates the database tables'''
+    db.create_all()
 
 # Whenever this file is run, we create all of the tables needed
 if __name__=='__main__':
