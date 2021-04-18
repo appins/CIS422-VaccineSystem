@@ -6,7 +6,9 @@ This file Supports the Server Framework
 """
 
 import flask
-import database
+from database import db
+
+QLALCHEMY_TRACK_MODIFICATIONS = False
 
 app = flask.Flask(__name__)
 
@@ -19,6 +21,7 @@ def RegistrationPage():
 	#Registration page
 	
 	#Get the required Fields From the html file 
+	username = flask.request.form["Username"]
 	first = flask.request.form["First_Name"]
 	last = flask.request.form["Last_Name"]
 	email = flask.request.form["Email"]
@@ -42,6 +45,14 @@ def RegistrationPage():
 	#calculate socre here
 	#
 	#
+	score = 10
+	password = "Cl4pTr4P"
+
+	db.create_vaccinee(username, last, email, phone, score, password)
+
+	print(db.debug_get_all_users())
+
+
 
 
 	return flask.render_template("success.html",
