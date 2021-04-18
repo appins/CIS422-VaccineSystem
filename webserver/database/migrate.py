@@ -5,7 +5,14 @@ Group 1: Alex Anderson, Hans Prieto, Vince Qiu, Colton Trebbien, Michael Wiltshi
 This file does all migrations needed to create the datbase
 '''
 
-from .db import db
+import db
+
+# If an app exists, we use it to work with the database, otherwise, we
+# create one and use that one instead
+if 'app' in locals():
+    db.init_app(app)
+else:
+    db.setup_headless()
 
 def hard_reset():
     '''Hard reset completely resets the database.'''
@@ -15,15 +22,19 @@ def hard_reset():
 
     # If they say yes, completely reset the database
     if ans == "yes":
-        db.drop_all()
-        db.create_all()
+        db.db.drop_all()
+        db.db.create_all()
 
 def create_all():
     '''Create all updates and creates the database tables'''
-    db.create_all()
+    db.db.create_all()
+
+def drop_all(confirm: str):
+    '''Drops all database tables. Must be passed the string yes to proceed'''
+    if confirm == "yes":
+        db.db.drop_all()
 
 # Whenever this file is run, we create all of the tables needed
 if __name__=='__main__':
-    db.create_all()
-
+    db.db.create_all()
 

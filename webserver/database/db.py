@@ -6,7 +6,7 @@ This file allows interfacing with the raw SQLite data via a Python import
 '''
 
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy 
 
 db = SQLAlchemy()
 
@@ -16,6 +16,14 @@ def init_app(app):
 
 def create_all():
     db.create_all()
+
+def setup_headless():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    init_app(app)
+
+if __name__=='__main__':
+    setup_headless() 
 
 class Vaccinee(db.Model):
     '''Vaccinee is a person who wishes to be vaccinated.
@@ -77,5 +85,3 @@ def debug_get_all_users() -> list:
     '''
     return Vaccinee.query.all()
 
-if __name__ == "__main__":
-    setup_db()
