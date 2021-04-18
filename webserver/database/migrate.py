@@ -19,6 +19,7 @@ def hard_reset():
         db.create_all()
 
 # Whenever this file is run, we create all of the tables needed
-db.create_all()
+if __name__=='__main__':
+    db.create_all()
 
 
