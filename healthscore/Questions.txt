@@ -1,0 +1,23 @@
+Questions to be asked to user when calculating Score:
+
+1) What is your height? (This will be in feet and inches, so have one box to enter feet, and another box to enter inches)
+
+2) What is your weight? (in pounds)
+
+3) What is your age?
+
+4) Are you currently experiencing any heart problems?
+
+5) Are you diagnosed with diabetes?
+
+6) Do you have any lung problems, such as difficulty breathing?
+
+7) Are you currently experiencing any liver problems?
+
+8) Do you have a weakened immune system, caused by cancer, or any other blood disorder?
+
+9) Have you ever tested positive for Covid-19?
+
+10) Have you recently been in close contact with anyone who tested positive for Covid-19?
+
+11) Are you currently experiencing any symptoms of a sore throat, fever, or any kind of sickness?
