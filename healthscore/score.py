@@ -18,7 +18,7 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     '''
     score = 0.0
 
-    # determine current score from bmi
+    # Determine current score from bmi.
     if bmi < 18.5:
         score += 5
     elif 18.5 <= bmi <= 24.9:
@@ -28,7 +28,7 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     else:
         score += 10
 
-    # determine current score from age
+    # Determine current score from age.
     if 0 <= age <= 9:
         score += 1
     elif 10 <= age <= 19:
@@ -50,44 +50,41 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     else:
         score += 10
 
-    # determine if user has heart problems
-    # if user has heart problems, increment score by 10
+    # Determine if user has heart problems.
+    # If user has heart problems, increment score by 10.
     if heart_prblms:
         score += 10
     
-    # determine if user has diabetes
-    # if user has diabetes, increment score by 8
+    # Determine if user has diabetes.
+    # if user has diabetes, increment score by 8.
     if diabetes:
         score += 8
 
-    # determine if user has lung problems
-    # if user has lung problems, increment score by 6
+    # Determine if user has lung problems.
+    # If user has lung problems, increment score by 6.
     if lung_prblms:
         score += 6
 
-    # determine if user has liver problems
-    # if user has liver problems, increment score by 4
+    # Determine if user has liver problems.
+    # If user has liver problems, increment score by 4.
     if liver_prblms:
         score += 4
     
-    # determine if user has cancer
-    # if user has cancer, increment score by 2
+    # Determine if user has cancer.
+    # If user has cancer, increment score by 2.
     if cancer:
         score += 2
 
-    # determine if user tested positive for covid recently
-    # if user has tested positive, increment score by 10
-    if pos_test:
-        score += 10
+    # Determine if user tested positive for covid recently, 
+    # or came into close contact with someone with covid.
+    # If either one is true, decrement score by 70% of itself.
+    if pos_test or close_contact:
+        score -= (score * 0.70)
 
-    # determine if user has came into close contact with someone with covid
-    # if true, increment score by 20
-    if close_contact:
-        score += 20
-
-    # determine if user has experienced any symptoms of sickness
-    # if so, increment score by 20
+    # Determine if user has experienced any symptoms of sickness.
+    # if so, decrement score by 90% of itself.
     if symptoms:
-        score += 20
+        score -= (score * 0.90)
 
-    return score
+    rounded_score = round(score, 2)
+    return rounded_score
