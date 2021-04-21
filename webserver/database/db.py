@@ -88,6 +88,7 @@ def delete_user(username: str) -> bool:
             db.session.commit(user)
             return True
         except:
+            db.session.rollback()
             return False
 
 def debug_get_all_users() -> list:
