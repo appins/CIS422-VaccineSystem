@@ -130,3 +130,5 @@ dmypy.json
 
 # SQLite database files 
 *.db
+
+.idea/
