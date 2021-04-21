@@ -7,6 +7,7 @@ This file allows interfacing with the raw SQLite data via a Python import
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
+from typing import List
 
 db = SQLAlchemy()
 
@@ -46,7 +47,7 @@ class Vaccinee(db.Model):
     phone = db.Column(db.String(30), unique=True, nullable=False)
     score = db.Column(db.Float, unique=False, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    has_been_vaccinated = db.Column(db.Boolean, default=True)
+    has_been_vaccinated = db.Column(db.Boolean, default=False)
 
 def create_vaccinee(username: str, fullname: str, email: str, phone: str, score: float, password: str) -> bool:
     '''Create vaccinee creates a vaccinee and stores them in the database,
@@ -87,11 +88,16 @@ def delete_user(username: str) -> bool:
     else:
         try:
             db.session.delete(user)
-            db.session.commit(user)
+            db.session.commit()
             return True
         except:
             db.session.rollback()
             return False
+
+def get_highest_scoring_vaccinees() -> List[Vaccinee]:
+     #user = Vaccinee.query.filter_by(has_been_vaccinated=False).order_by(Vaccinee.score).desc()
+     pass
+
 
 def debug_get_all_users() -> list:
     '''Get all users returns a list of all of the registered users. Useful for
