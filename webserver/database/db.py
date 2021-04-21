@@ -16,9 +16,7 @@ def init_app(app):
 
 def create_all():
     db.create_all()
-
-def setup_headless():
-    app = Flask(__name__)
+def setup_headless(): app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
     init_app(app)
 
@@ -36,6 +34,7 @@ class Vaccinee(db.Model):
         - A phone number
         - A score based on health factors
         - A password
+        - If they've been vaccinated
     All of this information is required
     '''
     id = db.Column(db.Integer, primary_key=True)
@@ -75,7 +74,21 @@ def get_user_by_username(username: str) -> Vaccinee:
     return user
 
 def delete_user(username: str) -> bool:
-    pass 
+    '''Delete a user by finding them with thier username (if they exist) and
+    issuing a delete query.
+
+    Returns true on success and false on failure.
+    '''
+    user = Vaccinee.query.filter_by(username=username).first()
+    if user is None:
+        return False
+    else:
+        try:
+            db.session.delete(user)
+            db.session.commit(user)
+            return True
+        except:
+            return False
 
 def debug_get_all_users() -> list:
     '''Get all users returns a list of all of the registered users. Useful for
