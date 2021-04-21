@@ -1,0 +1,46 @@
+body{
+  background-image: url(../img/Covid_19_Vaccine.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin:auto;
+  margin-left: 250px;
+}
+
+h1{
+  color: #f4f4f4;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 46px;
+  font-style: italic;
+  font-weight: 800;
+}
+
+h2{
+  color: #f4f4f4;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+
+.box1{
+  color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.box2{
+  color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+input[type="submit"]{
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: bold;
+  font-size: 20px;
+  width: 15%;
+  height: 2em
+}
