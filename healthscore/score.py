@@ -1,3 +1,5 @@
+from typing import List
+
 def calculate_bmi(heightft: int, heightin: int, weight: float) -> float:
     '''
     Calculates bmi for user
@@ -10,7 +12,7 @@ def calculate_bmi(heightft: int, heightin: int, weight: float) -> float:
     return rounded_bmi
 
 
-def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lung_prblms: bool, liver_prblms: bool, cancer: bool, pos_test: bool, close_contact: bool, symptoms: bool) -> float:
+def calculate_score(bmi: float, age: int, answers: List[bool]) -> float:
     '''
     Calculates health score of risk for covid
     The lower the score, the less risk.
@@ -69,6 +71,7 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     # Heart problems appears to be the highest death rate
     # for Covid, and thus, the score should be incremented
     # by 10.
+    heart_prblms = answers[0]
     if heart_prblms:
         score += 10
     
@@ -78,6 +81,7 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     # Diabetes appears to be the 2nd highest death rate
     # for Covid, before heart problems, and thus, 
     # the score should be incremented by 8.
+    diabetes = answers[1]
     if diabetes:
         score += 8
 
@@ -87,11 +91,13 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     # lung problems appears to be the 3rd highest death rate
     # for Covid, before heart problems and diabetes, and thus,
     # the score should be incremented by 6.
+    lung_prblms = answers[2]
     if lung_prblms:
         score += 6
 
     # Determine if user has liver problems.
     # If user has liver problems, increment score by 4.
+    liver_prblms = answers[3]
     if liver_prblms:
         score += 4
     
@@ -101,6 +107,7 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     # Cancer appears to be low in death rates
     # for Covid, and thus, the score should be
     # incremented by 2.
+    cancer = answers[4]
     if cancer:
         score += 2
 
@@ -113,6 +120,8 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     #
     # A person who has had Covid before are likely to be immune
     # to the disease. Thus, the score should decrease.
+    pos_test = answers[5]
+    close_contact = answers[6]
     if pos_test or close_contact:
         score -= (score * 0.70)
 
@@ -121,6 +130,7 @@ def calculate_score(bmi: float, age: int, heart_prblms: bool, diabetes: bool, lu
     #
     # A person who is sick will likely become sicker if they 
     # got the vaccine, and thus, the score should decrease.
+    symptoms = answers[7]
     if symptoms:
         score -= (score * 0.90)
 
