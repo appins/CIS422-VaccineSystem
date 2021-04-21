@@ -18,10 +18,11 @@ def hard_reset():
     '''Hard reset completely resets the database.'''
 
     # Ask the user and make sure they know what they're doing
-    ans = input("Deleting all information from the database. Continue? ([no]/yes): ")
+    # ans = input("Deleting all information from the database. Continue? ([no]/yes): ")
 
     # If they say yes, completely reset the database
-    if ans == "yes":
+    # if ans == "yes":
+    if "yes" == "yes":
         db.db.drop_all()
         db.db.create_all()
 
