@@ -16,7 +16,9 @@ def init_app(app):
 
 def create_all():
     db.create_all()
-def setup_headless(): app = Flask(__name__)
+
+def setup_headless():
+    app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
     init_app(app)
 
