@@ -7,6 +7,8 @@ This file allows interfacing with the raw SQLite data via a Python import
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
+from typing import List, Optional
+import datetime
 
 db = SQLAlchemy()
 
@@ -46,7 +48,8 @@ class Vaccinee(db.Model):
     phone = db.Column(db.String(30), unique=True, nullable=False)
     score = db.Column(db.Float, unique=False, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    has_been_vaccinated = db.Column(db.Boolean, default=True)
+    has_been_vaccinated = db.Column(db.Boolean, default=False)
+    date_created = db.Column(db.Date, default=datetime.datetime.now)
 
 def create_vaccinee(username: str, fullname: str, email: str, phone: str, score: float, password: str) -> bool:
     '''Create vaccinee creates a vaccinee and stores them in the database,
@@ -87,11 +90,31 @@ def delete_user(username: str) -> bool:
     else:
         try:
             db.session.delete(user)
-            db.session.commit(user)
+            db.session.commit()
             return True
         except:
             db.session.rollback()
             return False
+
+def generate_call_list(n: int) -> Optional[List[Vaccinee]]:
+    '''Returns the n highest scoring users, marking them as being called.
+
+    Returns None if there are any errors.
+    '''
+    users = Vaccinee.query.filter_by(has_been_vaccinated=False
+            ).order_by(Vaccinee.score.desc(), Vaccinee.date_created
+            ).limit(n).all()
+
+    for user in users:
+        user.has_been_vaccinated=True
+
+    try:
+        db.session.commit()
+    except:
+        return None
+
+    return users
+
 
 def debug_get_all_users() -> list:
     '''Get all users returns a list of all of the registered users. Useful for
