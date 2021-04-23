@@ -32,7 +32,6 @@ class Vaccinee(db.Model):
 
     They have some simple information about them, namely
         - A simple incrementing id
-        - A username
         - The users full name
         - An email address
         - A phone number
@@ -42,7 +41,6 @@ class Vaccinee(db.Model):
     All of this information is required
     '''
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
     fullname = db.Column(db.String(100), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(30), unique=True, nullable=False)
@@ -51,7 +49,7 @@ class Vaccinee(db.Model):
     has_been_vaccinated = db.Column(db.Boolean, default=False)
     date_created = db.Column(db.Date, default=datetime.datetime.now)
 
-def create_vaccinee(username: str, fullname: str, email: str, phone: str, score: float, password: str) -> bool:
+def create_vaccinee(fullname: str, email: str, phone: str, score: float, password: str) -> bool:
     '''Create vaccinee creates a vaccinee and stores them in the database,
     note that the password will be hashed using db's hashing function.
 
@@ -62,7 +60,7 @@ def create_vaccinee(username: str, fullname: str, email: str, phone: str, score:
     hashed_password = password
 
     # Creates the new vaccinee
-    new_user = Vaccinee(username=username, fullname=fullname, email=email, phone=phone, score=score, password=hashed_password)
+    new_user = Vaccinee(fullname=fullname, email=email, phone=phone, score=score, password=hashed_password)
 
     # Push changes to database
     try:
@@ -73,18 +71,18 @@ def create_vaccinee(username: str, fullname: str, email: str, phone: str, score:
         db.session.rollback()
         return False
 
-def get_user_by_username(username: str) -> Vaccinee:
-    '''Select a user based on their username'''
-    user = Vaccinee.query.filter_by(username=username).first()
+def get_user_by_email(email: str) -> Vaccinee:
+    '''Select a user based on their email'''
+    user = Vaccinee.query.filter_by(email=emails).first()
     return user
 
-def delete_user(username: str) -> bool:
-    '''Delete a user by finding them with thier username (if they exist) and
+def delete_user(email: str) -> bool:
+    '''Delete a user by finding them with thier email (if they exist) and
     issuing a delete query.
 
     Returns true on success and false on failure.
     '''
-    user = Vaccinee.query.filter_by(username=username).first()
+    user = Vaccinee.query.filter_by(email=email).first()
     if user is None:
         return False
     else:
