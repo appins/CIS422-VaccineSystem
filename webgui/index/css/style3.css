@@ -3,44 +3,41 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   margin:auto;
-  margin-left: 250px;
+}
+
+img{
+  width: 150px;
+  height: 110px;
+  margin-top: 260px;
+  margin-left: 650px;
 }
 
 h1{
   color: #f4f4f4;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 46px;
+  font-size: 40px;
   font-style: italic;
   font-weight: 800;
+  width: 70%;
+  margin-left: 580px;
 }
+
 
 h2{
   color: #f4f4f4;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 18px;
+  font-size: 40px;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 800;
+  width: 70%;
+  margin-left: 440px;
 }
 
-
-.box1{
-  color: #f4f4f4;
+button{
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.box2{
-  color: #f4f4f4;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-input[type="submit"]{
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: bold;
-  font-size: 20px;
-  width: 10%;
+  font-weight: 400;
+  font-size: 22px;
+  width: 12%;
   height: 2em;
+  margin-left: 590px;
 }
