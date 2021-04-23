@@ -117,9 +117,9 @@ def generate_call_list(n: int) -> Optional[List[Vaccinee]]:
 
     # We select the first n users, sorted by health risk score (highest first)
     # and then by date. 
-    users = Vaccinee.query.filter_by(has_been_vaccinated=False).
-            order_by(Vaccinee.score.desc(), Vaccinee.date_created).
-            limit(n).all()
+    users = Vaccinee.query.filter_by(has_been_vaccinated=False) \
+            .order_by(Vaccinee.score.desc(), Vaccinee.date_created) \
+            .limit(n).all()
 
     # Set all of the users as being vaccinated
     for user in users:
