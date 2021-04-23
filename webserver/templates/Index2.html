@@ -1,0 +1,133 @@
+﻿<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name ="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{url_for('static', filename='style1.css')}}">
+    <title>Register</title>
+</head>
+
+<body>
+    <h1>Registration Page</h1>
+    <h2>Please Fill Out The following information and please notice that all the questions are required</h2>
+    <form method="POST">
+      <div class="box1">
+        <div>
+          <label for="fname" >Full Name:</label>
+          <input type="text" name="fname" placeholder="Please Enter your Full Name" required>
+        </div>
+          <br>
+        <div>
+          <label for="age">Age:</label>
+          <input type="number" name="age" placeholder="Please Enter your age" required>
+        </div>
+          <br>
+        <div>
+          <label for="heightft">Height(feet):</label>
+          <input type="number" name="heightft" placeholder="Please Enter your feets" required>
+        </div>
+          <br>
+        <div>
+          <label for="heightin">Height(inches):</label>
+          <input type="number" name="heightin" placeholder="Please Enter your inches" required>
+        </div>
+          <br>
+        <div>
+          <label for="weight">Weight(Pounds):</label>
+          <input type="number" name="weight" placeholder="Please Enter your Weight" required>
+        </div>
+          <br>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" name="email" placeholder="Please Enter your Email" required>
+        </div>
+          <br>
+        <div>
+          <label for="Phone">Phone Number:</label>
+          <input type="tel" name="phone" placeholder="Number(ex:123-456-7890)" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        </div>
+      </div>
+        <br>
+
+        <!-- Questions Radio -->
+        <!-- Q4 -->
+      <div class="box2">
+        <p>Are you currently experiencing any heart problems?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="heart_prblms" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="heart_prblms" value="0">
+        </div>
+
+        <!-- Q5 -->
+        <p>Are you diagnosed with diabetes?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="diabetes" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="diabetes" value="0">
+        </div>
+
+        <!-- Q6 -->
+        <p>Do you have any lung problems, such as difficulty breathing?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="lung_prblms" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="lung_prblms" value="0">
+        </div>
+
+        <!-- Q7 -->
+        <p>Are you currently experiencing any liver problems?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="liver_prblms" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="liver_prblms" value="0">
+        </div>
+
+        <!-- Q8 -->
+        <p>Do you have a weakened immune system, caused by cancer, or any other blood disorder?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="cancer" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="cancer" value="0">
+        </div>
+
+        <!-- Q9 -->
+        <p>Have you ever tested positive for Covid-19?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="pos_test" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="pos_test" value="0">
+        </div>
+
+        <!-- Q10 -->
+        <p>Have you recently been in close contact with anyone who tested positive for Covid-19?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="close_contact" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="close_contact" value="0">
+        </div>
+
+        <!-- Q11 -->
+        <p>Are you currently experiencing any symptoms of a sore throat, fever, or any kind of sickness?</p>
+        <div>
+          <label for="Yes">Yes</label>
+          <input type="radio" name="symptoms" value="1">
+          <label for="No">No</label>
+          <input type="radio" name="symptoms" value="0">
+        </div>
+        <br>
+        <!-- SUBMIT BUTTON -->
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <div style="margin-top: 100px"></div>
+</body>
+</html>
