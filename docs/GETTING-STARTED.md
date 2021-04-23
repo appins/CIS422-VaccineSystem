@@ -10,16 +10,18 @@ as 'vaccinees' in later sections.
 
 
 ### Installing
-1. Download the repository from GitHub
-2. Install Python and Pip
-3. Install flask and flask-sqlalchemy. This can be done by typing
+1. Download the repository from GitHub.
+2. Download and install Python and Pip3.
+	- The most recent python version can be found here: https://www.python.org/downloads/ 
+3. Install flask and flask-sqlalchemy. This can be done by running the following in a 
+terminal or command prompt window. 
 ```
 pip3 install flask flask-sqlalchemy
 ```
-4. Run the project.
-	- On MacOS, click...
-	- On Windows click...
-	- On Linux, type...
-5. Visit localhost:5000 in a web browser
-6. Use the xyz to populate the database with sample data.
+4. Run the project via the `webserver/Flaskserver.py` file.
+	- You can either run this file by double clicking it, opening it with Python, or navigating to it in a terminal window and then typing `python3 Flaskserver.py`.
+5. Once the project is running, visit localhost:5000 in a web browser. 
+	- To see the webpage on another computer, navigate to the ip address of the host computer
+followed by `:5000`. For example, if the computer you're running the project on has an ip address
+of `123.123.123.123`, you would visit `123.123.123.123:8000`.
 
