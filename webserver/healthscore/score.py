@@ -79,7 +79,7 @@ def calculate_score(answers) -> float:
     # Heart problems appears to be the highest death rate
     # for Covid, and thus, the score should be incremented
     # by 10.
-    heart_prblms = answers[0]
+    heart_prblms = int(answers[0])
     if heart_prblms:
         score += 10
     
@@ -89,7 +89,7 @@ def calculate_score(answers) -> float:
     # Diabetes appears to be the 2nd highest death rate
     # for Covid, before heart problems, and thus, 
     # the score should be incremented by 8.
-    diabetes = answers[1]
+    diabetes = int(answers[1])
     if diabetes:
         score += 8
 
@@ -99,13 +99,13 @@ def calculate_score(answers) -> float:
     # lung problems appears to be the 3rd highest death rate
     # for Covid, before heart problems and diabetes, and thus,
     # the score should be incremented by 6.
-    lung_prblms = answers[2]
+    lung_prblms = int(answers[2])
     if lung_prblms:
         score += 6
 
     # Determine if user has liver problems.
     # If user has liver problems, increment score by 4.
-    liver_prblms = answers[3]
+    liver_prblms = int(answers[3])
     if liver_prblms:
         score += 4
     
@@ -115,7 +115,7 @@ def calculate_score(answers) -> float:
     # Cancer appears to be low in death rates
     # for Covid, and thus, the score should be
     # incremented by 2.
-    cancer = answers[4]
+    cancer = int(answers[4])
     if cancer:
         score += 2
 
@@ -128,8 +128,8 @@ def calculate_score(answers) -> float:
     #
     # A person who has had Covid before are likely to be immune
     # to the disease. Thus, the score should decrease.
-    pos_test = answers[5]
-    close_contact = answers[6]
+    pos_test = int(answers[5])
+    close_contact = int(answers[6])
     if pos_test or close_contact:
         score -= (score * 0.70)
 
@@ -138,7 +138,7 @@ def calculate_score(answers) -> float:
     #
     # A person who is sick will likely become sicker if they 
     # got the vaccine, and thus, the score should decrease.
-    symptoms = answers[7]
+    symptoms = int(answers[7])
     if symptoms:
         score -= (score * 0.90)
 
