@@ -73,7 +73,7 @@ def create_vaccinee(fullname: str, email: str, phone: str, score: float, passwor
 
 def get_user_by_email(email: str) -> Vaccinee:
     '''Select a user based on their email'''
-    user = Vaccinee.query.filter_by(email=emails).first()
+    user = Vaccinee.query.filter_by(email=email).first()
     return user
 
 def delete_user(email: str) -> bool:
