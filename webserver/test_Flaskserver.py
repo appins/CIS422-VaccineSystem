@@ -1,9 +1,8 @@
-#import Flaskserver
-import unittest
-#from flask import Flask
-#import migrate
-#fom flask_sqlalchemy import SQLAlchemy
 
+import unittest
+import flask
+from healthscore import score
+from database import db
 
 
 if __name__ == '__main__':
