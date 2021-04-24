@@ -84,8 +84,10 @@ def RegistrationUser():
 		#Create user in database
 		Password = "dummy_password"
 
+		#send vaccinee data to the database, If it fails redirect to /failure.
 		if(db.create_vaccinee(DatabaseList[0], DatabaseList[1], DatabaseList[2], UserScore, Password) == False):
 			print("Database creation Failed")
+			return flask.redirect("/failure")
 
 
 		print("looking at the database list:\n")
@@ -101,6 +103,10 @@ def RegistrationUser():
 def Success():
 	#print("I got HeRE\n")
 	return flask.render_template("Index3.html")
+
+@app.route("/failure", methods = ["POST", "GET"])
+def Failure():
+	return flask.render_template("Index5.html")
 
 if __name__ == "__main__":
 	app.run()
