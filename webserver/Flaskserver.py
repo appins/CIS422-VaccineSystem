@@ -16,15 +16,15 @@ db.init_app(app)
 db.create_all()
 
 @app.route("/", methods= ["POST", "GET"])
-def Home():
+def ServeWebpage():
 	if flask.request.method == "POST":
 		#if flask.request.form.get()
 		return flask.redirect("/register")
 	return flask.render_template("Index1.html")
-	#return flask.redirect("/anewplace")
+
 
 @app.route("/register", methods = ["POST", "GET"])
-def RegistrationPage():
+def RegistrationUser():
 	"""Once the button is pressed and the user wants to submit their data
 		we request the form data
 
@@ -51,7 +51,7 @@ def RegistrationPage():
 
 		These Items should be put into a list format to calculate the users score.
 		"""
-	if flask.request.method == "POST": #Server Recieves post request
+	if flask.request.method == "POST": #Server Recieves POST request
 		
 
 		ScoreList = [] #create initial list
@@ -84,16 +84,12 @@ def RegistrationPage():
 		#Create user in database
 		Password = "dummy_password"
 
-
 		if(db.create_vaccinee(DatabaseList[0], DatabaseList[1], DatabaseList[2], UserScore, Password) == False):
 			print("Database creation Failed")
 
 
 		print("looking at the database list:\n")
 		print(db.debug_get_all_users())
-
-
-
 
 		print("redirecting to success\n")
 		return flask.redirect("/success")
@@ -103,13 +99,8 @@ def RegistrationPage():
 
 @app.route("/success", methods = ["POST", "GET"])
 def Success():
-	print("I got HeRE\n")
+	#print("I got HeRE\n")
 	return flask.render_template("Index3.html")
-
-
-	#calcut;ate socre here
-	
-
 
 if __name__ == "__main__":
 	app.run()
