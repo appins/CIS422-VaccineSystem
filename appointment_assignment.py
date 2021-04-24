@@ -16,6 +16,10 @@ import sys
 # Import os for os.exit
 import os
 
+import csv
+from io import StringIO
+
+
 # Create and configure the flask application so that we can retrieve
 # everything we need from our database
 app = Flask(__name__)
@@ -57,10 +61,32 @@ if __name__=='__main__':
             print("Not a valid number, please try again!")
 
     # Holds the vaccinees that are to be put in the call list
+    # Print to the vaccine output file in csv format
+
     vaccinees = db.generate_call_list(num_users)
 
     for vaccinee in vaccinees:
         print(vaccinee.fullname)
+
+    with open(output_filename, mode='w') as csv_file:
+        fieldnames = ['Fullname', 'Number']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for vaccinee in vaccinees:
+            writer.writerow({'Fullname': vaccinee.fullname, "Number": vaccinee.phone})
+
+       
+
+ 
+   
+
+
+
+
+
+
+ 
 
 
     
