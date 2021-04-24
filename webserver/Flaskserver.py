@@ -23,13 +23,9 @@ def Home():
 	return flask.render_template("Index1.html")
 	#return flask.redirect("/anewplace")
 
-
-
 @app.route("/register", methods = ["POST", "GET"])
 def RegistrationPage():
-	#Registration page
-	if flask.request.method == "POST":
-		"""Once the button is pressed and the user wants to submit their data
+	"""Once the button is pressed and the user wants to submit their data
 		we request the form data
 
 		Send data to the user score module. 
@@ -55,6 +51,9 @@ def RegistrationPage():
 
 		These Items should be put into a list format to calculate the users score.
 		"""
+	if flask.request.method == "POST": #Server Recieves post request
+		
+
 		ScoreList = [] #create initial list
 		DatabaseList = [] #create initial database list
 		ScoreList.append(flask.request.form["heart_prblms"])	#Grab Heart Problems
@@ -85,8 +84,12 @@ def RegistrationPage():
 		#Create user in database
 		Password = "dummy_password"
 
-		db.create_vaccinee(Database[0], Database[1], Database[2], Database[3], Password)
 
+		if(db.create_vaccinee(DatabaseList[0], DatabaseList[1], DatabaseList[2], UserScore, Password) == False):
+			print("Database creation Failed")
+
+
+		print("looking at the database list:\n")
 		print(db.debug_get_all_users())
 
 
