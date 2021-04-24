@@ -19,6 +19,23 @@ import os
 import csv
 from io import StringIO
 
+def write_call_list(filename, number):
+    """write call list creates a csv file with the vaccinee information
+    It takes the name of the file to be opened and the number of vaccines wished
+    to be taken from the database.
+
+    """
+
+    vaccinees = db.generate_call_list(num_users)
+    with open(output_filename, mode='w') as csv_file:
+        fieldnames = ['Fullname', 'Number']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for vaccinee in vaccinees:
+            writer.writerow({'Fullname': vaccinee.fullname, "Number": vaccinee.phone})
+
+
 
 # Create and configure the flask application so that we can retrieve
 # everything we need from our database
@@ -35,11 +52,17 @@ if __name__=='__main__':
 
     # We overwrite that filename if one is in argv. If there are too many
     # arguments we exit the program.
-    if len(sys.argv) == 3: # that is, exactly 1 argument
-        output_filename = argv[2]
-    elif len(sys.argv) > 3: # that is, more than 1 argument
+    if len(sys.argv) == 2: # that is, exactly 1 argument
+        #Incase the user tries to overwrite any python module.
+        suffix = ".csv"
+        if (sys.argv[1].endswith(suffix) != True):
+            print("invalid file type (csv only)\n")
+            exit(1)
+
+        output_filename = sys.argv[1]
+    elif len(sys.argv) > 2: # that is, more than 1 argument
         print("Usage: python3 appointment_assignment.py [FILE]")
-        os.exit(1)
+        exit(1)
     else: # that is, no arugments
         # When no arguments given we print a message explaining how to change
         # the output file
@@ -62,19 +85,8 @@ if __name__=='__main__':
 
     # Holds the vaccinees that are to be put in the call list
     # Print to the vaccine output file in csv format
+    write_call_list(output_filename,num_users)
 
-    vaccinees = db.generate_call_list(num_users)
-
-    for vaccinee in vaccinees:
-        print(vaccinee.fullname)
-
-    with open(output_filename, mode='w') as csv_file:
-        fieldnames = ['Fullname', 'Number']
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-        writer.writeheader()
-        for vaccinee in vaccinees:
-            writer.writerow({'Fullname': vaccinee.fullname, "Number": vaccinee.phone})
 
        
 
