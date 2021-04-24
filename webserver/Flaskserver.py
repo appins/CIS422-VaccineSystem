@@ -83,9 +83,11 @@ def RegistrationPage():
 		print(f"User_Score:{UserScore}")			 #Uncomment For Debug
 
 		#Create user in database
-		#db.create_vaccinee(username, last, email, phone, score, password)
+		Password = "dummy_password"
 
-		#print(db.debug_get_all_users())
+		db.create_vaccinee(Database[0], Database[1], Database[2], Database[3], Password)
+
+		print(db.debug_get_all_users())
 
 
 
