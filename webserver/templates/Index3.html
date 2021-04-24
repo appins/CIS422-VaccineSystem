@@ -4,19 +4,22 @@
     <meta charset="utf-8" />
     <meta name ="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style3.css">
+    <link rel="stylesheet" ref="{{url_for('static', filename='style3.css')}}">
     <title>Register Successful</title>
   </head>
   <body>
-    <img src="img/check.png" alt="check">
+    <div id ="image" style = "background:{{url_for('static', filename='Covid_19_Vaccine.jpg')}}"></div>
+    <img src="/static/check.png" alt="check">
     <h1> Congratulation</h1>
-    <h2>Registration completed cussceefully</h2>
+    <h2>Registration completed Sussceefully</h2>
     <div>
       <p>
         <strong>
+          <!--
           <button>
             <a href="file:///C:/Users/rexqi/OneDrive/Desktop/index/Index1.html">OK </a>
           </button>
+        -->
         </strong>
       </p>
     </div>
