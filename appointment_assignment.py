@@ -28,12 +28,12 @@ def write_call_list(filename, number):
 
     vaccinees = db.generate_call_list(num_users)
     with open(output_filename, mode='w') as csv_file:
-        fieldnames = ['Fullname', 'Number']
+        fieldnames = ['Full name', 'Phone', 'Email', 'Score']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
         for vaccinee in vaccinees:
-            writer.writerow({'Fullname': vaccinee.fullname, "Number": vaccinee.phone})
+            writer.writerow({'Full name': vaccinee.fullname, "Phone": vaccinee.phone, "Email": vaccinee.email, "Score": vaccinee.score})
 
 
 
