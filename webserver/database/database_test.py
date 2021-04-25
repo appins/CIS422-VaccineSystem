@@ -52,7 +52,7 @@ class T1_users(unittest.TestCase):
 		self.assertFalse(db.create_vaccinee("Henlo Hoi", "hello@hi.hey",
 											1234567892, 7777, "password123"))
 
-                # Check duplicate phone number
+        # Check duplicate phone number
 		self.assertFalse(db.create_vaccinee("Henlo Hoi", "heyo@hi.hey",
 											1234567891, 7777, "password123"))
 
@@ -76,5 +76,6 @@ class T1_users(unittest.TestCase):
 		self.assertTrue(db.delete_user("hello@hi.hey"))
 		self.assertTrue(db.delete_user("hey@hi.hey"))
 		self.assertEqual(len(db.debug_get_all_users()), 0)
+
 if __name__ == '__main__':
-    unittest.main()
+	unittest.main()
