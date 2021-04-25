@@ -1,8 +1,7 @@
-
 import unittest
 import flask
-from healthscore import score
-from database import db
+#from healthscore import score
+#from database import db
 import requests
 
 app = flask.Flask(__name__)
@@ -11,9 +10,7 @@ testapp = app.test_client()
 
 s = requests.session()
 
-payload = {
-	'fullname': 'John Doe'
-}
+payload = {'fullname': 'John Doe'}
 
 #default register
 response = s.post("http://127.0.0.1:5000/register")

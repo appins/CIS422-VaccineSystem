@@ -1,21 +1,21 @@
 How to install the Vaccine Distribution System
 Group 1: Alex Anderson, Hans Prieto, Vince Qiu, Colton Trebbien, Michael Wiltshire
 
-Note that there is a similiar guide in the user guide included with this software.
+Note that there is a similar guide in the user guide included with this software.
 We recommend consulting that guide if you get stuck. There are screenshots
-included that should help guide you. The installation section in the user guide is 
-can be treated as substitute if you find this one unhelpful.
+included that should help guide you. The installation section in the user guide can
+be treated as a substitute if you find this one unhelpful.
 
 NOTE: None of our team members used a Mac to develop this project. The MacOS guide
 is untested.
 
 Installing Python and needed Python modules:
 	1. Download and install the newest version of Python. 
-		- This can be found at https://www.python.org/downloads/
+		- This can be found at: https://www.python.org/downloads/
 		- Installation on Linux is typically distribution dependant. On Ubuntu, 
-		just type `sudo apt install python3` into a terminal.
+		  just type `sudo apt install python3` into a terminal.
 	2. Open a a terminal (if you're on MacOS or Linux) or command prompt (if you're
-	on windows).
+	   on windows).
 	3. Type `python3 -m pip install flask flask-sqlalchemy`.
 		- If you get an error on Windows that mentions the Microsoft store, please
 		instead try `python -m pip install flask flask-sqlalchemy`. If this also does
@@ -29,7 +29,7 @@ Obtaining the project:
 		- On Linux, double click on the archive and follow the archive managers format
 	3. Copy the folder onto your desktop. Rename it to 'VDS'.
 		- On most Operating Systems, you can rename files and folders by slowly double
-		clicking on them.
+		  clicking on them.
 	
 Starting the web server:
 	1. Ensure you've obtained the project and installed Python as described above.
@@ -67,9 +67,9 @@ Assign appointments:
 	1. Ensure you've obtained the project and installed Python as described above.
 		- The webserver does not need to be running.
 		- Technically, you don't need to do anything besides obtain the project
-		and get Python installed but for this step to be non-trivial, you should
-		insert some sample data or get users to sign up through the web portal.
-	2. Come up with the number of doses you have recieved.
+		  and get Python installed but for this step to be non-trivial, you should
+		  insert some sample data or get users to sign up through the web portal.
+	2. Come up with the number of doses you have received.
 
 	Windows:
 		3. Open the folder on your desktop (VDS).
@@ -82,7 +82,7 @@ Assign appointments:
 		5. Type the number you got in (2).
 	
 	6. call_list.csv was just generated. Back it up to a secure location and schedule appointments
-	with the users in that file.
+	   with the users in that file.
 	
 	
 
