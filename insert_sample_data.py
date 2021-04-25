@@ -42,8 +42,6 @@ def insert_sample_user() -> bool:
     for _ in range(random.randrange(3, 9)):
         name += random.choice(string.ascii_lowercase)
 
-    print(name)
-
     #
     # second goal: generate a random email, somethign like "alsdkjflkaj@asdkasd.com"
     #
