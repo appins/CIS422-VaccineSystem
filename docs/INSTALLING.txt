@@ -1,0 +1,88 @@
+How to install the Vaccine Distribution System
+Group 1: Alex Anderson, Hans Prieto, Vince Qiu, Colton Trebbien, Michael Wiltshire
+
+Note that there is a similiar guide in the user guide included with this software.
+We recommend consulting that guide if you get stuck. There are screenshots
+included that should help guide you. The installation section in the user guide is 
+can be treated as substitute if you find this one unhelpful.
+
+NOTE: None of our team members used a Mac to develop this project. The MacOS guide
+is untested.
+
+Installing Python and needed Python modules:
+	1. Download and install the newest version of Python. 
+		- This can be found at https://www.python.org/downloads/
+		- Installation on Linux is typically distribution dependant. On Ubuntu, 
+		just type `sudo apt install python3` into a terminal
+	2. Open a a terminal (if you're on MacOS or Linux) or command prompt (if you're
+	on windows)
+	3. Type `python3 -m pip install flask flask-sqlalchemy`
+		- If you get an error on Windows that mentions the Microsoft store, please
+		instead try `python -m pip install flask flask-sqlalchemy`. If this also does
+		not work, please ensure python is installed.
+
+Obtaining the project:
+	1. Download the source code for this project. It should be in a .zip format
+	2. Unzip or extract the contents using the tool included with your operating system
+		- On Windows, right click on the .zip file and click 'extract all'
+		- On MacOS, right click on the .zip file and click 'extract selected'
+		- On Linux, double click on the archive and follow the archive managers format
+	3. Copy the folder onto your desktop. Rename it to 'VDS'.
+		- On most Operating Systems, you can rename files and folders by slowly double
+		clicking on them
+	
+Starting the web server:
+	1. Ensure you've obtained the project and installed Python as described above.
+
+	Windows: 
+		2. Open the folder on your desktop. 
+		3. Open the webserver folder. 
+		4. Double click the 'start.bat' file (it may only show 'start')
+	MacOS/Linux:
+		2. Open a terminal
+		3. Type `cd ~/Desktop/VDS/webserver; python3 Flaskserver.py || python Flaskserver.py`
+		
+Viewing the website:
+	1. Ensure you've started the web server
+	2. Open a browser window
+	3. Enter in 127.0.0.1:5000 in the address bar and hit enter
+
+Inserting sample data:
+	1. Ensure you've obtained the project and installed Python as described above.
+		- The webserver does not need to be running.
+	2. Decide on a number of sample vaccinees you'd like to insert into the database.
+		- We recommend a small number if you're testing your placement.
+
+	Windows:
+		3. Open the folder on your desktop.
+		4. Double click insert_sample_data.bat (may appear as insert_sample_data)
+		5. Enter the number of sample users you decided on in (2)
+	
+	MacOS/Linux:
+		3. Open a terminal
+		4. Type `cd ~/Desktop/VDS; python3 insert_sample_data.py || python insert_sample_data.py`
+		5. Enter the number of sample users you decided on in (2)
+	
+Assign appointments: 
+	1. Ensure you've obtained the project and installed Python as described above.
+		- The webserver does not need to be running.
+		- Technically, you don't need to do anything besides obtain the project
+		and get Python installed but for this step to be non-trivial, you should
+		insert some sample data or get users to sign up through the web portal
+	2. Come up with the number of doses you have recieved.
+
+	Windows:
+		3. Open the folder on your desktop (VDS)
+		4. Double click appointment_assignment.bad (may appear as appointment_assignment)
+		5. Type the number you got in (2).
+	
+	MacOS/Linux:
+		3. Open a terminal
+		4. Type `cd ~/Desktop/VDS; python3 appointment_assignment.py || python appointment_assignment.py`
+		5. Type the number you got in (2).
+	
+	6. call_list.csv was just generated. Back it up to a secure location and schedule appointments
+	with the users in that file.
+	
+	
+
