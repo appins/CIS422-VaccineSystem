@@ -1,1 +1,2 @@
+python3 appointment_assignment.py
 python appointment_assignment.py
